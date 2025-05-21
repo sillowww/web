@@ -1,24 +1,30 @@
-import './style.css'
-import typescriptLogo from './typescript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.ts'
+import "./style.css";
+import "./components/layout";
+import "./components/router";
+import "./components/pages";
 
-document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://www.typescriptlang.org/" target="_blank">
-      <img src="${typescriptLogo}" class="logo vanilla" alt="TypeScript logo" />
-    </a>
-    <h1>Vite + TypeScript</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite and TypeScript logos to learn more
-    </p>
-  </div>
-`
+document.querySelector<HTMLDivElement>("#app") ||
+  document.body.insertAdjacentHTML("beforeend", '<div id="app"></div>');
 
-setupCounter(document.querySelector<HTMLButtonElement>('#counter')!)
+const appMount = document.querySelector<HTMLDivElement>("#app");
+if (appMount) {
+  appMount.innerHTML = "<app-layout></app-layout>";
+} else {
+  const newAppMount = document.createElement("div");
+  newAppMount.id = "app";
+  document.body.appendChild(newAppMount);
+}
+
+// biome-ignore lint/suspicious/noExplicitAny: TODO: properly type
+const router = document.createElement("app-router") as any;
+router.setup(
+  {
+    "/": "home-page",
+    "/about": "about-page",
+    "/uses": "uses-page",
+    "/contact": "contact-page",
+  },
+  "/",
+);
+
+document.body.appendChild(router);
