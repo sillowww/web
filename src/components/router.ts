@@ -45,6 +45,17 @@ export class AppRouter extends HTMLElement {
     } else {
       contentEl.innerHTML = "<p>404 - page not found</p>";
     }
+
+    const navLinks = document.querySelectorAll("nav a");
+    // navLinks.forEach((link) => {
+    for (const link of navLinks) {
+      if (link.getAttribute("href") === window.location.pathname) {
+        link.classList.add("active");
+      } else {
+        link.classList.remove("active");
+      }
+    }
+    // });
   }
 }
 

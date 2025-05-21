@@ -1,4 +1,4 @@
-import "./style.css";
+import "./css/_index.css";
 import "./components/layout";
 import "./components/router";
 import "./components/pages";

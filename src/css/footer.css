@@ -1,0 +1,26 @@
+/* ===== footer ===== */
+footer {
+    margin-top: 2.5rem;
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--border);
+    font-size: 0.9rem;
+    color: var(--fg-muted);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5em;
+    justify-content: space-between;
+    align-items: center;
+    opacity: 0.7;
+}
+
+footer a {
+    color: var(--accent-hover);
+    text-decoration: underline;
+    font-size: 0.95em;
+    opacity: 0.9;
+}
+
+footer a:hover {
+    color: var(--accent);
+    opacity: 1;
+}
