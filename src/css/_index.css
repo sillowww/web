@@ -5,6 +5,7 @@
 :root {
     --accent: #a259ff;
     --accent-hover: #d6b4ff;
+    --accent-muted: #a259ff;
     --bg: #181825;
     --bg-alt: #232336;
     --fg: #f5f5f7;
@@ -63,18 +64,83 @@ canvas {
 }
 
 /* ===== uses grid ===== */
-.uses-grid {
+.uses-grid,
+.info-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 1.5rem;
 }
 
-.uses-grid > div {
-    background: #20203a;
+.uses-grid > div,
+.info-grid > div {
     border-radius: var(--radius);
     box-shadow: 0 1px 8px #0002;
-    padding: 1em;
+    padding: 0.5em;
     border: 1px solid var(--border);
+}
+
+.uses-grid h3,
+.info-grid h3 {
+    font-size: 1.2rem;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    color: var(--accent);
+    font-weight: 600;
+}
+
+.uses-grid ul,
+.info-grid ul {
+    margin: 0;
+    list-style: none;
+    padding: 0;
+}
+
+.uses-grid li,
+.info-grid li {
+    display: flex;
+    flex-direction: column;
+    padding: 0.25em 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.uses-grid .item-main,
+.info-grid .item-main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.uses-grid .info,
+.info-grid .info {
+    font-size: 0.75em;
+    color: var(--fg-muted);
+    font-style: italic;
+    margin-top: 0.25em;
+    padding-left: 0.5em;
+    border-left: 2px solid var(--border);
+}
+
+.uses-grid li:last-child,
+.info-grid li:last-child {
+    border-bottom: none;
+}
+
+.uses-grid .label,
+.info-grid .label {
+    font-weight: 700;
+    color: var(--accent-muted);
+}
+
+.uses-grid .value,
+.info-grid .value {
+    font-weight: 400;
+    color: var(--fg-muted);
+    a {
+        color: var(--fg-muted);
+        &:hover {
+            color: var(--accent-hover);
+        }
+    }
 }
 
 /* ===== main & section ===== */
