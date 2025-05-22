@@ -62,7 +62,7 @@ export class ContactPage extends HTMLElement {
         <ul>
           <li>discord: sillowww</li>
           <li>bsky: <a href="https://bsky.app/profile/wlo.moe" target="_blank">wlo.moe</a></li>
-          <li>email: willow@wlo.moe</li>
+          <li>email: <a href="mailto:hai@wlo.moe">hai@wlo.moe</a></li>
           <li>github: <a href="https://github.com/sillowww" target="_blank">sillowww</a></li>
           <li>discuit: <a href="https://discuit.org/@sillowww" target="_blank">@sillowww</a></li>
         </ul>

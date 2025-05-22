@@ -24,6 +24,11 @@
     box-sizing: border-box;
 }
 
+html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
 body {
     padding: 1rem;
     margin: 0;
@@ -41,8 +46,20 @@ body {
     margin: 1rem auto;
     border-radius: var(--radius);
     border: 1px solid var(--border);
-    backdrop-filter: blur(2px);
+    backdrop-filter: blur(8px) brightness(0.5);
     box-shadow: var(--shadow);
+    z-index: 1;
+    position: relative;
+}
+
+canvas {
+    z-index: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
 }
 
 /* ===== uses grid ===== */
@@ -104,6 +121,19 @@ a:focus-visible {
         opacity: 1;
         transform: none;
     }
+}
+
+#content > * {
+    animation: fadein 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    background: var(--bg-alt);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--accent);
+    border-radius: 8px;
 }
 
 /* ===== responsive ===== */
