@@ -1,3 +1,5 @@
+public/_*
+
 # Logs
 logs
 *.log
