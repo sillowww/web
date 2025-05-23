@@ -1,4 +1,5 @@
-import { renderSectionItem, type Sections } from "../types";
+import { render } from "preact";
+import { renderSectionItem, type Sections } from "../types.tsx";
 
 export class UsesPage extends HTMLElement {
   connectedCallback() {
@@ -82,25 +83,25 @@ export class UsesPage extends HTMLElement {
       },
     ];
 
-    this.innerHTML = `
+    this.innerHTML = "";
+    render(
       <section>
         <h2>uses</h2>
         <div class="uses-grid">
-          ${sections
-            .map(
-              (section) => `
-            <div>
-              <h3>${section.title}</h3>
+          {sections.map((section) => (
+            <div key={section.title}>
+              <h3>{section.title}</h3>
               <ul>
-                ${section.items.map((item, idx) => renderSectionItem(item, idx)).join("")}
+                {section.items.map((item, idx) =>
+                  renderSectionItem(item, idx, "uses"),
+                )}
               </ul>
             </div>
-          `,
-            )
-            .join("")}
+          ))}
         </div>
-      </section>
-    `;
+      </section>,
+      this,
+    );
   }
 }
 customElements.define("uses-page", UsesPage);

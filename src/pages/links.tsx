@@ -1,4 +1,5 @@
-import { renderSectionItem, type Sections } from "../types";
+import { render } from "preact";
+import { renderSectionItem, type Sections } from "../types.tsx";
 
 export class LinksPage extends HTMLElement {
   connectedCallback() {
@@ -68,26 +69,26 @@ export class LinksPage extends HTMLElement {
       },
     ];
 
-    this.innerHTML = `
+    this.innerHTML = "";
+    render(
       <section>
         <h2>contact</h2>
         <p>i go by 'sillowww' in the majority of places.</p>
         <div class="info-grid">
-          ${sections
-            .map(
-              (section) => `
-            <div>
-              <h3>${section.title}</h3>
+          {sections.map((section) => (
+            <div key={section.title}>
+              <h3>{section.title}</h3>
               <ul>
-                ${section.items.map((item, idx) => renderSectionItem(item, idx, "contact")).join("")}
+                {section.items.map((item, idx) =>
+                  renderSectionItem(item, idx, "contact"),
+                )}
               </ul>
             </div>
-          `,
-            )
-            .join("")}
+          ))}
         </div>
-      </section>
-    `;
+      </section>,
+      this,
+    );
   }
 }
 
