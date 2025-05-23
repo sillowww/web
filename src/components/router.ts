@@ -47,15 +47,11 @@ export class AppRouter extends HTMLElement {
     }
 
     const navLinks = document.querySelectorAll("nav a");
-    // navLinks.forEach((link) => {
     for (const link of navLinks) {
-      if (link.getAttribute("href") === window.location.pathname) {
+      if (link.getAttribute("href") === window.location.pathname)
         link.classList.add("active");
-      } else {
-        link.classList.remove("active");
-      }
+      else link.classList.remove("active");
     }
-    // });
   }
 }
 

@@ -44,7 +44,7 @@ body {
 #app {
     max-width: 700px;
     padding: 1rem;
-    margin: 1rem auto;
+    margin: auto;
     border-radius: var(--radius);
     border: 1px solid var(--border);
     backdrop-filter: blur(8px) brightness(0.5);
@@ -135,12 +135,22 @@ canvas {
 .info-grid .value {
     font-weight: 400;
     color: var(--fg-muted);
+    word-break: break-word;
+    max-width: 50%;
+    text-align: right;
     a {
         color: var(--fg-muted);
         &:hover {
             color: var(--accent-hover);
         }
     }
+}
+
+.uses-grid .item-main,
+.info-grid .item-main {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
 }
 
 /* ===== main & section ===== */
@@ -203,10 +213,9 @@ a:focus-visible {
 }
 
 /* ===== responsive ===== */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
     #app {
         padding: 1rem;
-        margin-top: 1rem;
     }
     header {
         flex-direction: column;

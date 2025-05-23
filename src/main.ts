@@ -17,7 +17,7 @@ router.setup(
     "/": "home-page",
     "/about": "about-page",
     "/uses": "uses-page",
-    "/contact": "contact-page",
+    "/links": "links-page",
   },
   "/",
 );
