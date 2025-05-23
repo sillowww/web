@@ -4,20 +4,21 @@ export class AppLayout extends HTMLElement {
     console.log(router, router[0]);
 
     this.innerHTML = `
-      <header>
+      <a href="#content" class="skip-link">skip to main content</a>
+      <header role="banner">
         <h1 style="display: flex; align-items: center; gap: 0.5em;">
           <img src="/_avatar/48.webp" alt="TODO:" />
           willow
         </h1>
-        <nav>
+        <nav role="navigation" aria-label="main navigation">
           <a href="/">home</a>
           <a href="/about">about</a>
           <a href="/uses">uses</a>
           <a href="/links">links</a>
         </nav>
       </header>
-      <main id="content"></main>
-      <footer>
+      <main role="main" aria-live="polite" id="content"></main>
+      <footer role="contentinfo">
         <a href="https://plainvanillaweb.com/">no framework used.</a>
         <a href="https://github.com/sillowww/web">source code.</a>
       </footer>

@@ -48,6 +48,7 @@ export class AppRouter extends HTMLElement {
 
     this.showLoading(contentEl);
     this.isLoading = true;
+    document.title = `${path === "/" ? "home" : path.slice(1)} - wlo.moe`;
 
     try {
       const componentTag = await routeLoader();
@@ -89,9 +90,15 @@ export class AppRouter extends HTMLElement {
   private updateNavigation() {
     const navLinks = document.querySelectorAll("nav a");
     for (const link of navLinks) {
-      if (link.getAttribute("href") === window.location.pathname)
+      if (link.getAttribute("href") === window.location.pathname) {
         link.classList.add("active");
-      else link.classList.remove("active");
+        link.setAttribute("aria-current", "page");
+        link.classList.toggle("active", true);
+      } else {
+        link.classList.remove("active");
+        link.removeAttribute("aria-current");
+        link.classList.toggle("active", false);
+      }
     }
   }
 }
