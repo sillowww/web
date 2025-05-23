@@ -1,7 +1,6 @@
 import "./css/_index.css";
 import "./components/layout";
 import "./components/router";
-import "./components/pages";
 import type { AppRouter } from "./components/router";
 
 // -- mount app --
@@ -12,15 +11,12 @@ if (appMount) appMount.innerHTML = "<app-layout></app-layout>";
 
 // -- setup router --
 const router = document.createElement("app-router") as AppRouter;
-router.setup(
-  {
-    "/": "home-page",
-    "/about": "about-page",
-    "/uses": "uses-page",
-    "/links": "links-page",
-  },
-  "/",
-);
+router.setup({
+  "/": () => import("./pages/home").then(() => "home-page"),
+  "/about": () => import("./pages/about").then(() => "about-page"),
+  "/uses": () => import("./pages/uses").then(() => "uses-page"),
+  "/links": () => import("./pages/links").then(() => "links-page"),
+});
 document.body.appendChild(router);
 
 // --- ripple canvas setup ---
