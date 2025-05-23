@@ -99,15 +99,6 @@ export class AppRouter extends HTMLElement {
     this.updateNavigation();
   }
 
-  private showLoading(contentEl: HTMLElement) {
-    contentEl.innerHTML = `
-      <div class="loading">
-        <div class="spinner"></div>
-        <p>loading...</p>
-      </div>
-    `;
-  }
-
   private showError(contentEl: HTMLElement, error: Error) {
     contentEl.innerHTML = `
       <div class="error">
@@ -123,11 +114,9 @@ export class AppRouter extends HTMLElement {
       if (link.getAttribute("href") === window.location.pathname) {
         link.classList.add("active");
         link.setAttribute("aria-current", "page");
-        link.classList.toggle("active", true);
       } else {
         link.classList.remove("active");
         link.removeAttribute("aria-current");
-        link.classList.toggle("active", false);
       }
     }
   }

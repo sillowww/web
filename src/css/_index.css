@@ -1,5 +1,6 @@
 @import "./footer.css";
 @import "./header.css";
+@import "./nav.css";
 
 /* ===== variables & base ===== */
 :root {
@@ -44,9 +45,14 @@ body {
     transform: translateX(20px);
     opacity: 0;
 }
+
 .page-exit {
     transform: translateX(-20px);
     opacity: 0;
+}
+
+* {
+    -webkit-tap-highlight-color: transparent;
 }
 
 .skip-link {
@@ -67,12 +73,6 @@ body {
 
 /* === loading state === */
 .loading {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-
     display: flex;
     flex-direction: column;
     align-items: center;

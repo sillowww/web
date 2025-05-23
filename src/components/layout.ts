@@ -10,7 +10,7 @@ export class AppLayout extends HTMLElement {
           <img src="/_avatar/48.webp" alt="TODO:" />
           willow
         </h1>
-        <nav role="navigation" aria-label="main navigation">
+        <nav role="navigation" aria-label="main navigation" class="desktop-nav">
           <a href="/">home</a>
           <a href="/about">about</a>
           <a href="/uses">uses</a>
@@ -18,7 +18,7 @@ export class AppLayout extends HTMLElement {
         </nav>
       </header>
       <main role="main" aria-live="polite" id="content"></main>
-      <footer role="contentinfo">
+      <footer role="contentinfo" class="desktop-footer">
         <a href="https://plainvanillaweb.com/">no framework used.</a>
         <a href="https://github.com/sillowww/web">source code.</a>
       </footer>

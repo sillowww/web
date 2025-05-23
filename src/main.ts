@@ -19,6 +19,26 @@ router.setup({
 });
 document.body.appendChild(router);
 
+document.body.insertAdjacentHTML(
+  "beforeend",
+  `
+  <nav role="navigation" aria-label="mobile navigation" class="mobile-nav">
+    <a href="/">
+      <span class="nav-label">home</span>
+    </a>
+    <a href="/about">
+      <span class="nav-label">about</span>
+    </a>
+    <a href="/uses">
+      <span class="nav-label">uses</span>
+    </a>
+    <a href="/links">
+      <span class="nav-label">links</span>
+    </a>
+  </nav>
+`,
+);
+
 const prefersReducedMotion = window.matchMedia(
   "(prefers-reduced-motion: reduce)",
 );
