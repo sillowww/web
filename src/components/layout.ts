@@ -1,5 +1,8 @@
 export class AppLayout extends HTMLElement {
   connectedCallback() {
+    const router = document.getElementsByTagName("app-router");
+    console.log(router, router[0]);
+
     this.innerHTML = `
       <header>
         <h1 style="display: flex; align-items: center; gap: 0.5em;">
@@ -15,8 +18,8 @@ export class AppLayout extends HTMLElement {
       </header>
       <main id="content"></main>
       <footer>
-        <p>no framework used.</p>
-        <a href="https://plainvanillaweb.com/">plain vanilla web</a>
+        <a href="https://plainvanillaweb.com/">no framework used.</a>
+        <a href="https://github.com/sillowww/web">source code.</a>
       </footer>
     `;
   }
