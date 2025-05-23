@@ -156,28 +156,28 @@ canvas {
 /* ===== main & section ===== */
 main {
     margin-top: 2rem;
-}
 
-section {
-    background: transparent;
-    border-radius: var(--radius);
-    animation: fadein 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
+    section {
+        background: transparent;
+        border-radius: var(--radius);
+        animation: fadein 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
 
-h2 {
-    font-size: 1.5rem;
-    margin-top: 0;
-    margin-bottom: 1rem;
-    color: var(--accent);
-    font-weight: 600;
-}
+    h2 {
+        font-size: 1.5rem;
+        margin-top: 0;
+        margin-bottom: 1rem;
+        color: var(--accent);
+        font-weight: 600;
+    }
 
-ul {
-    padding-left: 1.2em;
-}
+    ul {
+        padding-left: 1.2em;
+    }
 
-li {
-    margin-bottom: 0.3em;
+    li {
+        margin-bottom: 0.3em;
+    }
 }
 
 /* ===== utilities ===== */
