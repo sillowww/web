@@ -3,6 +3,7 @@ export class AppRouter extends HTMLElement {
   private defaultRoute = "/";
   private componentCache = new Map<string, boolean>();
   private isLoading = false;
+  private preloadCache = new Map<string, Promise<string>>();
 
   connectedCallback() {
     window.addEventListener("popstate", () => this.render());
@@ -17,6 +18,23 @@ export class AppRouter extends HTMLElement {
         this.navigate(href);
       }
     });
+
+    document.addEventListener(
+      "mouseenter",
+      (e) => {
+        const anchor = (e.target as HTMLElement).closest("a");
+        const href = anchor?.getAttribute("href");
+
+        if (
+          href?.startsWith("/") &&
+          this.routes[href] &&
+          !this.preloadCache.has(href)
+        ) {
+          this.preloadCache.set(href, this.routes[href]());
+        }
+      },
+      true,
+    );
 
     this.render();
   }
@@ -46,9 +64,11 @@ export class AppRouter extends HTMLElement {
       return;
     }
 
-    this.showLoading(contentEl);
     this.isLoading = true;
     document.title = `${path === "/" ? "home" : path.slice(1)} - wlo.moe`;
+
+    // fade out current content
+    contentEl.style.opacity = "0";
 
     try {
       const componentTag = await routeLoader();
@@ -57,11 +77,21 @@ export class AppRouter extends HTMLElement {
         this.componentCache.set(componentTag, true);
       }
 
+      // wait for fade out to complete
+      await new Promise((resolve) => setTimeout(resolve, 150));
+
+      // replace content
       contentEl.innerHTML = "";
       const element = document.createElement(componentTag);
       contentEl.appendChild(element);
+
+      // fade in new content
+      requestAnimationFrame(() => {
+        contentEl.style.opacity = "1";
+      });
     } catch (error) {
       this.showError(contentEl, error as Error);
+      contentEl.style.opacity = "1";
     } finally {
       this.isLoading = false;
     }
