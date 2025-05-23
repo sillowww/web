@@ -10,7 +10,7 @@ export function imageResize(): Plugin {
     async buildStart() {
       const sizes = [48, 64, 128, 512, 600];
       const inputPath = "public/avatar.webp";
-      const outputDir = "public/.avatar";
+      const outputDir = "public/_avatar";
 
       if (!existsSync(inputPath)) {
         console.warn(
